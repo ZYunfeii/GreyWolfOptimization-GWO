@@ -47,10 +47,7 @@ class GWO:
                     alpha = self.update_pos(self.alpha_pos[j],self.position[i,j],a)
                     beta = self.update_pos(self.beta_pos[j], self.position[i, j], a)
                     delta = self.update_pos(self.delta_pos[j], self.position[i, j], a)
-                    sum_score = np.sum([self.alpha_score,self.beta_score,self.delta_score])
-                    self.position[i,j] = sum(np.array([alpha,beta,delta])*np.array([self.alpha_score/sum_score,
-                                                                                    self.beta_score/sum_score,
-                                                                                    self.delta_score/sum_score]))
+                    self.position[i, j] = sum(np.array([alpha, beta, delta]) * np.array([1/3,1/3,1/3]))
             count += 1
             self.convergence_curve[count-1] = self.alpha_score
         self.plot_results()
